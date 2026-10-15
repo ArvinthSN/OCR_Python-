@@ -1,0 +1,366 @@
+[
+  {
+    "filename": "bench_clean_0.png",
+    "file_path": "data\\benchmark\\bench_clean_0.png",
+    "degradation_type": "clean",
+    "severity": 0,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  },
+  {
+    "filename": "bench_rotation_90.png",
+    "file_path": "data\\benchmark\\bench_rotation_90.png",
+    "degradation_type": "rotation",
+    "severity": 90,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  },
+  {
+    "filename": "bench_rotation_180.png",
+    "file_path": "data\\benchmark\\bench_rotation_180.png",
+    "degradation_type": "rotation",
+    "severity": 180,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  },
+  {
+    "filename": "bench_rotation_15.png",
+    "file_path": "data\\benchmark\\bench_rotation_15.png",
+    "degradation_type": "rotation",
+    "severity": 15,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  },
+  {
+    "filename": "bench_gaussian_blur_2_0.png",
+    "file_path": "data\\benchmark\\bench_gaussian_blur_2_0.png",
+    "degradation_type": "gaussian_blur",
+    "severity": 2.0,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  },
+  {
+    "filename": "bench_motion_blur_9.png",
+    "file_path": "data\\benchmark\\bench_motion_blur_9.png",
+    "degradation_type": "motion_blur",
+    "severity": 9,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  },
+  {
+    "filename": "bench_rotated_and_blurred_90.png",
+    "file_path": "data\\benchmark\\bench_rotated_and_blurred_90.png",
+    "degradation_type": "rotated_and_blurred",
+    "severity": 90,
+    "ground_truth": {
+      "claim_id": "CLM-SYN-001",
+      "patient_name": "Arjun Sharma",
+      "patient_age": 42,
+      "patient_gender": "Male",
+      "policy_number": "POL-8829104",
+      "member_id": "MEM-55421",
+      "hospital_name": "Apollo Hospitals Delhi",
+      "admission_name": "Dr. Rajesh Gupta",
+      "admission_date": "2025-02-10",
+      "discharge_date": "2025-02-14",
+      "diagnosis": "Acute Appendicitis",
+      "icd10_code": "K35.8",
+      "procedure_name": "Laparoscopic Appendectomy",
+      "total_bill_amount": 125000.0,
+      "claimed_amount": 125000.0,
+      "priority_type": "Emergency",
+      "ifsc_code": "HDFC0001234",
+      "bank_account_number": "50100234567890",
+      "line_items": [
+        {
+          "description": "Room Rent & Nursing Charges",
+          "qty": 4,
+          "rate": 5000.0,
+          "amount": 20000.0
+        },
+        {
+          "description": "Operation Theatre & Surgeon Charges",
+          "qty": 1,
+          "rate": 65000.0,
+          "amount": 65000.0
+        },
+        {
+          "description": "Pharmacy & Surgical Consumables",
+          "qty": 1,
+          "rate": 28000.0,
+          "amount": 28000.0
+        },
+        {
+          "description": "Diagnostic & Pathology Investigations",
+          "qty": 1,
+          "rate": 12000.0,
+          "amount": 12000.0
+        }
+      ]
+    }
+  }
+]

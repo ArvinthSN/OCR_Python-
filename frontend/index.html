@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Insurance Claim OCR & Autofill</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand-title">
+      <span>🏥 Health Claim Universal OCR</span>
+      <span class="brand-badge" id="engine-badge">EasyOCR Powered</span>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-secondary" id="btn-export-json" disabled>📥 Export JSON</button>
+      <button class="btn btn-primary" id="btn-confirm-claim" disabled>✓ Confirm Claim</button>
+    </div>
+  </header>
+
+  <!-- Upload Area -->
+  <div class="dropzone" id="dropzone">
+    <div class="dropzone-icon">📁</div>
+    <div class="dropzone-text">Drag & Drop Claim Documents (ZIP, PDF, or Images)</div>
+    <div class="dropzone-hint">Supports nested ZIPs, scanned PDFs, rotated/blurred photos (PNG, JPG, TIFF)</div>
+    <input type="file" id="file-input" multiple accept=".zip,.pdf,.png,.jpg,.jpeg,.tiff,.tif" style="display: none;">
+    <div class="selected-files-bar" id="selected-files-list"></div>
+    <div style="margin-top: 16px;">
+      <button class="btn btn-primary" id="btn-upload" disabled>🚀 Ingest & Process Documents</button>
+    </div>
+  </div>
+
+  <!-- Processing Status Card -->
+  <div class="progress-card hidden" id="progress-container">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <strong id="progress-action">Initializing processing...</strong>
+      <span id="progress-pct" style="font-weight: 700; color: var(--primary);">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+    <div style="display: flex; gap: 20px; font-size: 13px; color: var(--text-muted);">
+      <span id="stat-files">Files: 0/0</span>
+      <span id="stat-pages">Pages: 0/0</span>
+      <span id="stat-extracted">Fields: 0</span>
+    </div>
+  </div>
+
+  <!-- Core Summary Dashboard (Exact fields requested) -->
+  <div class="form-section hidden" id="summary-dashboard">
+    <div class="section-title">
+      <span>📋 Health Insurance Claim Summary</span>
+      <span id="claim-overall-status" class="badge badge-info">Pending Review</span>
+    </div>
+
+    <!-- Flags Notification Banner -->
+    <div id="flag-banner" class="hidden" style="background: var(--danger-bg); border: 1px solid #fecaca; color: var(--danger); padding: 12px; border-radius: var(--radius); margin-bottom: 16px; font-size: 13px;">
+      <strong>⚠️ Claim Flagged for Review:</strong>
+      <ul id="flag-reasons-list" style="margin-left: 20px; margin-top: 4px;"></ul>
+    </div>
+
+    <div class="dashboard-grid">
+      <!-- 1. Patient Name -->
+      <div class="metric-card">
+        <div class="metric-label">Patient Name</div>
+        <div class="metric-value" id="card-patient-name">—</div>
+      </div>
+      <!-- 2. ID -->
+      <div class="metric-card">
+        <div class="metric-label">Member / Policy ID</div>
+        <div class="metric-value" id="card-id">—</div>
+      </div>
+      <!-- 3. Priority Type -->
+      <div class="metric-card">
+        <div class="metric-label">Priority Type</div>
+        <div class="metric-value" id="card-priority-type">Standard</div>
+      </div>
+      <!-- 4. Age & SLA -->
+      <div class="metric-card">
+        <div class="metric-label">Age / SLA Deadline</div>
+        <div class="metric-value" id="card-age-sla">— / 7 Days</div>
+      </div>
+      <!-- 5. Hospital Name -->
+      <div class="metric-card">
+        <div class="metric-label">Hospital Name</div>
+        <div class="metric-value" id="card-hospital-name">—</div>
+      </div>
+      <!-- 6. Admission Name (Doctor) -->
+      <div class="metric-card">
+        <div class="metric-label">Admission Name / Treating Doctor</div>
+        <div class="metric-value" id="card-admission-name">—</div>
+      </div>
+      <!-- 7. Admission & Discharge Dates -->
+      <div class="metric-card">
+        <div class="metric-label">Admission / Discharge Date</div>
+        <div class="metric-value" id="card-dates">—</div>
+      </div>
+      <!-- 8. Source -->
+      <div class="metric-card">
+        <div class="metric-label">Source Document</div>
+        <div class="metric-value" id="card-source" style="font-size: 14px; word-break: break-all;">—</div>
+      </div>
+      <!-- 9. Billed & Claimed Amount -->
+      <div class="metric-card">
+        <div class="metric-label">Billed / Claimed Amount</div>
+        <div class="metric-value" id="card-billed" style="color: var(--primary);">₹ 0.00</div>
+      </div>
+      <!-- 10. Stage Status & Assignee -->
+      <div class="metric-card">
+        <div class="metric-label">Stage Status / Assignee</div>
+        <div class="metric-value" id="card-stage-assignee" style="font-size: 14px;">—</div>
+      </div>
+      <!-- 11. Received Date -->
+      <div class="metric-card">
+        <div class="metric-label">Received Timestamp</div>
+        <div class="metric-value" id="card-received" style="font-size: 14px;">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Autofill Form -->
+  <div class="form-section hidden" id="detailed-form-section">
+    <div class="section-title">
+      <span>✏️ Editable Autofilled Form & Verification</span>
+      <button class="btn btn-secondary" id="btn-save-corrections" style="padding: 6px 14px; font-size: 13px;">💾 Save Edits</button>
+    </div>
+
+    <!-- Sub sections -->
+    <h4 style="margin: 12px 0 8px; color: var(--text-muted); font-size: 13px; text-transform: uppercase;">Hospitalization & Medical</h4>
+    <div class="fields-grid" id="medical-fields-grid"></div>
+
+    <h4 style="margin: 20px 0 8px; color: var(--text-muted); font-size: 13px; text-transform: uppercase;">Financial & Billing</h4>
+    <div class="fields-grid" id="billing-fields-grid"></div>
+
+    <h4 style="margin: 20px 0 8px; color: var(--text-muted); font-size: 13px; text-transform: uppercase;">Bank & Identity Details</h4>
+    <div class="fields-grid" id="identity-fields-grid"></div>
+  </div>
+
+  <!-- Line Items Table -->
+  <div class="form-section hidden" id="line-items-section">
+    <div class="section-title">
+      <span>📑 Itemized Hospital Expenses (Line Items)</span>
+      <span id="line-items-total" style="font-weight: 700; color: var(--primary);">Total: ₹0.00</span>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Description</th>
+            <th>Qty</th>
+            <th>Unit Rate (₹)</th>
+            <th>Amount (₹)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="line-items-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Document & Page Previews (Original vs Enhanced) -->
+  <div class="form-section hidden" id="document-pages-section">
+    <div class="section-title">
+      <span>🔍 Document Pages & Image Enhancement Traceability</span>
+    </div>
+    <div id="pages-list-container"></div>
+  </div>
+
+</div>
+
+<!-- Modal for Image Preview -->
+<div class="viewer-modal" id="image-modal">
+  <div class="modal-content">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+      <h3 id="modal-title">Original vs Enhanced Page</h3>
+      <button id="btn-close-modal" style="background: none; border: none; font-size: 20px; cursor: pointer;">✕</button>
+    </div>
+    <div id="modal-enhancement-info" style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;"></div>
+    <div class="image-comparison-grid">
+      <div class="img-preview-box">
+        <div style="font-weight: 600; font-size: 13px; margin-bottom: 6px;">Original Uploaded Image</div>
+        <img id="modal-img-orig" src="" alt="Original">
+      </div>
+      <div class="img-preview-box">
+        <div style="font-weight: 600; font-size: 13px; margin-bottom: 6px; color: var(--primary);">Enhanced & Oriented Image</div>
+        <img id="modal-img-enh" src="" alt="Enhanced">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
